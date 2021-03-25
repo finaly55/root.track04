@@ -1,6 +1,5 @@
-# Campus-network-app
-Campus-network-app est le front du projet Campus Network.
-Le projet est une application web qui consiste à faire un reseau social interne pour l'école Campus Academy.
+# root.Track
+Root.Track est le front du projet Campus Network du groupe NANTES TEAM FORCE 04.
 
 ---
 ## 💿 Installation du projet
@@ -22,12 +21,6 @@ npm run build
 ## 🔧 Accès aux outils du projet :
 ### Mongo :
 cloud.mongodb.com : connexion avec Google
-### Google : 
-email : campusnetwork44@gmail.com
-mot de passe : Campusnetwork44@
-### Heruko (intégration continue):
-email : campusnetwork44@gmail.com
-mot de passe : Campusnetwork44@
 
 ---
 ## ⚠️ Les bonnes pratiques à adoptées ⚠️ 
