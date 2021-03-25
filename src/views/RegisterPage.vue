@@ -1,7 +1,7 @@
 <template>
-<div class="d-flex fill-height pa-0 hiden">
+<div class="d-flex fill-height pa-0 hidden">
     <v-col class="d-flex flex-column align-center color-left">
-      <v-layout  align="center" class="d-flex flex-column justify-center  align-center">
+      <v-layout  align="center" class="d-flex flex-column justify-center align-center">
         <div class="title">Inscription</div>
         <div class="mt-5">
           <form @submit="login" method="post">
@@ -44,22 +44,21 @@
           </form>
         </div>
         <div class="text-center">
-          <div class="mt-2">
+<!--          <div class="mt-2">
             <router-link to="/login">Se connecter</router-link>
           </div>
-          <div class="mt-2"><a href=""> Mentions légales</a></div>
+          <div class="mt-2"><a href=""> Mentions légales</a></div>-->
         </div>
       </v-layout>
     </v-col>
 
-    <v-col class="d-flex justify-center content align-center color-right">
-      <img
-        class="border"
+  <v-col class="d-flex justify-center content">
+    <img
+        class="border ma-auto"
         src="@/assets/pictures/bee9_UN.png"
-        height="50%"
-        width="50%"
-      />
-    </v-col>
+        width="400px"
+    />
+  </v-col>
   </div>
 
 </template>
