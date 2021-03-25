@@ -55,7 +55,7 @@
     <v-col class="d-flex justify-center content align-center color-right">
       <img
         class="border"
-        src="@/assets/pictures/LOGO_CAMPUS_ACADEMY.jpg"
+        src="@/assets/pictures/bee9_UN.png"
         height="50%"
         width="50%"
       />

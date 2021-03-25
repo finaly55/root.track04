@@ -7,7 +7,7 @@
       stateless
       class="pl-10"
       width="270px"
-      v-if="$route.path != '/login' && $route.path != '/register'"
+      v-if="$route.path !== '/login' && $route.path !== '/register'"
     >
       <div class="d-flex align-start flex-column" style="height: 100vh">
         <h3 class="grey--text text--lighten-2 my-10">CAMPUS NETWORK</h3>
@@ -20,7 +20,7 @@
             right: -116px;
             margin: auto;
           "
-          src="@/assets/pictures/LOGO_CAMPUS_ACADEMY_white.png"
+          src="@/assets/pictures/bee9_UN.png"
         />
         <div class="d-flex">
           <v-avatar size="72px">

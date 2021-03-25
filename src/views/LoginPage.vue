@@ -26,11 +26,11 @@
           <v-btn elevation="2" large text @click="login">Se connecter</v-btn>
         </div>
         <div class="text-center">
-          <div class="mt-2"><a href="">Mot de passe oublié</a></div>
-          <div class="mt-2">
+<!--          <div class="mt-2"><a href="">Mot de passe oublié</a></div>-->
+<!--          <div class="mt-2">
             <router-link to="/register">Inscription</router-link>
-          </div>
-          <div class="mt-2"><a href=""> Mentions légales</a></div>
+          </div>-->
+<!--          <div class="mt-2"><a href=""> Mentions légales</a></div>-->
         </div>
       </v-layout>
     </v-col>
@@ -38,7 +38,7 @@
     <v-col class="d-flex justify-center content">
       <img
         class="border ma-auto"
-        src="@/assets/pictures/LOGO_CAMPUS_ACADEMY.jpg"
+        src="@/assets/pictures/bee9_UN.png"
         width="400px"
       />
     </v-col>
