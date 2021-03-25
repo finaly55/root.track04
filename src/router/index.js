@@ -40,32 +40,50 @@ const routes = [
   {
     path: '/exo1',
     name: 'Exercice 1',
-    component: Exercice1Page
+    component: Exercice1Page,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/exo2',
     name: 'Exercice 2',
-    component: Exercice2Page
+    component: Exercice2Page,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/exo3',
     name: 'Exercice 3',
-    component: Exercice3Page
+    component: Exercice3Page,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/exo4',
     name: 'Exercice 4',
-    component: Exercice4Page
+    component: Exercice4Page,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/exo5',
     name: 'Exercice 5',
-    component: Exercice5Page
+    component: Exercice5Page,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/exo6',
     name: 'Exercice 6',
-    component: Exercice6Page
+    component: Exercice6Page,
+    meta: {
+      requiresAuth: true
+    }
   },
 
   {

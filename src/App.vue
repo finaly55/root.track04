@@ -10,30 +10,7 @@
       v-if="$route.path !== '/login' && $route.path !== '/register'"
     >
       <div class="d-flex align-start flex-column" style="height: 100vh">
-        <h3 class="grey--text text--lighten-2 my-10">CAMPUS NETWORK</h3>
-        <img
-          style="
-            position: absolute;
-            width: 278px;
-            opacity: 0.04;
-            top: 0;
-            right: -116px;
-            margin: auto;
-          "
-          src="@/assets/pictures/bee9_UN.png"
-        />
-        <div class="d-flex">
-          <v-avatar size="72px">
-            <img
-              alt="Avatar"
-              src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
-            />
-          </v-avatar>
-          <div class="white--text d-flex flex-column ml-4 mt-3">
-            <span>Clarisse</span>
-            <span>Kessab</span>
-          </div>
-        </div>
+        <h3 class="grey--text text--lighten-2 my-10">root.track TaskForce 04</h3>
         <v-list dark class="mt-5 pr-8">
           <router-link :to="url" :key="icon" v-for="[icon, url, text] in links">
             <v-list-item link>
@@ -49,17 +26,6 @@
         </v-list>
         <div class="mt-auto">
           <v-list dark class="mt-5 pr-8">
-            <!-- <router-link to="/settings">
-              <v-list-item link>
-                <v-list-item-icon>
-                  <v-icon>settings</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-content>
-                  <v-list-item-title>Paramètres</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </router-link> -->
             <v-list-item link @click="logout">
               <v-list-item-icon>
                 <v-icon>logout</v-icon>
@@ -112,14 +78,12 @@ export default {
     snackbarText: "",
     drawer: true,
     links: [
-      ["home", "/news", "Accueil"],
-      ["perm_identity", "/my-profil", "Mon profil"],
-      ["group_add", "/friends", "Mes amis"],
-      [
-        "admin_panel_settings",
-        "/administration/publications",
-        "Administration",
-      ],
+      ["", "/exo1", "Exercice 1"],
+      ["", "/exo2", "Exercice 2"],
+      ["", "/exo3", "Exercice 3"],
+      ["", "/exo4", "Exercice 4"],
+      ["", "/exo5", "Exercice 5"],
+      ["", "/exo6", "Exercice 6"],
     ],
     userConnected: {},
     campuses: []
