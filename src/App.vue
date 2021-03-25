@@ -79,12 +79,15 @@
       v-if="$route.path !== '/login' && $route.path !== '/register'"
     >
       <v-container class="py-8 pr-6 pl-16" fluid>
-        <router-view :userConnected="userConnected" :campuses="campuses"></router-view>
+        <router-view
+          :userConnected="userConnected"
+          :campuses="campuses"
+        ></router-view>
       </v-container>
     </v-main>
     <v-main fill-height v-else>
       <v-container fluid class="pa-0 fill-height">
-        <router-view :userConnected="userConnected" ></router-view>
+        <router-view :userConnected="userConnected"></router-view>
       </v-container>
     </v-main>
 
@@ -122,10 +125,12 @@ export default {
       ],
     ],
     userConnected: {},
-    campuses: []
+    campuses: [],
   }),
 
   async created() {
+    // changer le titre
+    document.title = "Root Track 04";
     // fonction qui permet d'afficher des messages en snackbar
     const context = this;
     Vue.prototype.$showSnackbar = async function (text) {
@@ -136,9 +141,8 @@ export default {
     Vue.prototype.$updateUserConnected = async function (user) {
       context.userConnected = user;
     };
-
   },
-  
+
   methods: {
     logout() {
       firebase
@@ -149,9 +153,9 @@ export default {
         });
     },
 
-    monTest(){
-      console.log("fhugihg")
-    }
+    monTest() {
+      console.log("fhugihg");
+    },
   },
 };
 </script>
