@@ -1,0 +1,35 @@
+{
+    "name": "campus-network-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "build": "vue-cli-service build",
+        "lint": "eslint --ext .js,.vue src",
+        "dev": "vue-cli-service serve",
+        "postinstall": "npm run build",
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "firebase": "^8.2.1",
+        "moment": "^2.29.1",
+        "register-service-worker": "^1.7.1",
+        "serve-static": "^1.14.1",
+        "vue": "^2.6.11",
+        "vue-router": "^3.2.0",
+        "vuetify": "^2.2.11"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-pwa": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "vue-cli-plugin-vuetify": "~2.0.7",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}
