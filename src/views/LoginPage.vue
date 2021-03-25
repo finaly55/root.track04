@@ -47,7 +47,6 @@
 
 <script>
 import firebase from "firebase";
-import UserService from "../services/UserService";
 
 export default {
   name: "LoginPage",
@@ -62,12 +61,11 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.mail, this.password)
         .then(async (data) => {
-          let userConnected = await UserService.getUserByMail(this.mail);
           this.$showSnackbar(
-            "Bonjour " + userConnected.firstname + ", vous êtes maintenant connecté."
+            "Bonjour vous êtes maintenant connecté."
           );
 
-          this.$updateUserConnected(userConnected)
+          this.$updateUserConnected({"firstname" : "Julien", "mail": data.user.email, "lastname": "lastname"})
           this.$router.replace({ name: "News" });
         })
         .catch((err) => {
