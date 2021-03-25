@@ -6,6 +6,12 @@ import LoginPage from '../views/LoginPage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 
 import firebase from 'firebase'
+import Exercice1Page from "@/views/Exercice1Page";
+import Exercice2Page from "@/views/Exercice2Page";
+import Exercice3Page from "@/views/Exercice3Page";
+import Exercice4Page from "@/views/Exercice4Page";
+import Exercice5Page from "@/views/Exercice5Page";
+import Exercice6Page from "@/views/Exercice6Page";
 
 Vue.use(VueRouter)
 
