@@ -1,6 +1,5 @@
 # root.Track
-Campus-network-app est le front du projet Campus Network.
-Le projet est une application web qui consiste à faire un reseau social interne pour l'école Campus Academy.
+Root.Track est le front du projet Campus Network du groupe NANTES TEAM FORCE 04.
 
 ---
 ## 💿 Installation du projet
