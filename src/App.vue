@@ -14,9 +14,6 @@
         <v-list dark class="mt-5 pr-8">
           <router-link :to="url" :key="icon" v-for="[icon, url, text] in links">
             <v-list-item link>
-              <v-list-item-icon>
-                <v-icon>{{ icon }}</v-icon>
-              </v-list-item-icon>
 
               <v-list-item-content>
                 <v-list-item-title>{{ text }}</v-list-item-title>
