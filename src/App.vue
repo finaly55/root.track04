@@ -81,6 +81,7 @@ export default {
     snackbarText: "",
     drawer: true,
     links: [
+      ["", "/", "Accueil"],
       ["", "/exo1", "Exercice 1"],
       ["", "/exo2", "Exercice 2"],
       ["", "/exo3", "Exercice 3"],
