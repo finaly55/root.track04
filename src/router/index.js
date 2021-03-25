@@ -32,6 +32,37 @@ const routes = [
     component: RegisterPage
   },
   {
+    path: '/exo1',
+    name: 'Exercice 1',
+    component: Exercice1Page
+  },
+  {
+    path: '/exo2',
+    name: 'Exercice 2',
+    component: Exercice2Page
+  },
+  {
+    path: '/exo3',
+    name: 'Exercice 3',
+    component: Exercice3Page
+  },
+  {
+    path: '/exo4',
+    name: 'Exercice 4',
+    component: Exercice4Page
+  },
+  {
+    path: '/exo5',
+    name: 'Exercice 5',
+    component: Exercice5Page
+  },
+  {
+    path: '/exo6',
+    name: 'Exercice 6',
+    component: Exercice6Page
+  },
+
+  {
     // will match everything other, redirect to home
     path: '*',
     beforeEnter: (to, from, next) => {

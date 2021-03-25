@@ -76,7 +76,7 @@
 
     <v-main
       class="background-container"
-      v-if="$route.path != '/login' && $route.path != '/register'"
+      v-if="$route.path !== '/login' && $route.path !== '/register'"
     >
       <v-container class="py-8 pr-6 pl-16" fluid>
         <router-view :userConnected="userConnected" :campuses="campuses"></router-view>
@@ -127,7 +127,7 @@ export default {
 
   async created() {
     // fonction qui permet d'afficher des messages en snackbar
-    var context = this;
+    const context = this;
     Vue.prototype.$showSnackbar = async function (text) {
       context.snackbarEnabled = true;
       context.snackbarText = text;
