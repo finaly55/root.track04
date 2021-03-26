@@ -26,11 +26,11 @@
           <v-btn elevation="2" large text @click="login">Se connecter</v-btn>
         </div>
         <div class="text-center">
-<!--          <div class="mt-2"><a href="">Mot de passe oublié</a></div>-->
-<!--          <div class="mt-2">
+          <!--          <div class="mt-2"><a href="">Mot de passe oublié</a></div>-->
+          <!--          <div class="mt-2">
             <router-link to="/register">Inscription</router-link>
           </div>-->
-<!--          <div class="mt-2"><a href=""> Mentions légales</a></div>-->
+          <!--          <div class="mt-2"><a href=""> Mentions légales</a></div>-->
         </div>
       </v-layout>
     </v-col>
@@ -61,11 +61,17 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.mail, this.password)
         .then(async (data) => {
-          this.$showSnackbar(
-            "Bonjour vous êtes maintenant connecté."
-          );
+          this.$showSnackbar("Bonjour vous êtes maintenant connecté.");
 
-          this.$updateUserConnected({"firstname" : "Julien", "mail": data.user.email, "lastname": "lastname"})
+          let taskForceNb = data.user.email.split("@");
+          taskForceNb = taskForceNb[0].substr(9);
+
+          this.$updateUserConnected({
+            firstname: "Julien",
+            mail: data.user.email,
+            lastname: "lastname",
+            number: taskForceNb,
+          });
           this.$router.replace({ name: "News" });
         })
         .catch((err) => {

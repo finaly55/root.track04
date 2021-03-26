@@ -107,14 +107,14 @@ export default {
     };
     const currentUser = firebase.auth().currentUser;
 
-    let taskForceNb = currentUser.email.split('@');
+    let taskForceNb = currentUser.email.split("@");
     taskForceNb = taskForceNb[0].substr(9);
 
     this.userConnected = {
       firstname: "Julien",
       mail: currentUser.email,
       lastname: "lastname",
-      number: taskForceNb
+      number: taskForceNb,
     };
   },
 

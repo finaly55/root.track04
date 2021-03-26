@@ -5,7 +5,7 @@
     <br />
     <v-data-table
       :headers="headers"
-      :items="teams"
+      :items="scores"
       :items-per-page="6"
       hide-default-footer
       class="elevation-1"
@@ -15,14 +15,13 @@
       >click</v-btn
     >
   </div>
-<!--  <div v-for="item in scores" :key="item">
+  <!--  <div v-for="item in scores" :key="item">
     &lt;!&ndash; contenu &ndash;&gt;
   </div>-->
-<!--  <div class="modal fade" v-show="scores"/>-->
+  <!--  <div class="modal fade" v-show="scores"/>-->
 </template>
 
 <script>
-
 import firebase from "firebase";
 
 export default {
@@ -30,16 +29,15 @@ export default {
   components: {},
   created() {},
   methods: {
-    writeUserData(userId, name, email, imageUrl)
-    {
+    writeUserData(userId, name, email, imageUrl) {
       firebase
-          .database()
-          .ref("users/" + userId)
-          .set({
-            username: name,
-            email: email,
-            profile_picture: imageUrl,
-          });
+        .database()
+        .ref("users/" + userId)
+        .set({
+          username: name,
+          email: email,
+          profile_picture: imageUrl,
+        });
     },
   },
   data() {
@@ -49,97 +47,42 @@ export default {
           text: "Exercice",
           align: "start",
           sortable: false,
-          value: "name",
+          value: "taskForce",
         },
-        { text: "Exercice 1", value: "exercice1" },
-        { text: "Exercice 2", value: "exercice2" },
-        { text: "Exercice 3", value: "exercice3" },
-        { text: "Exercice 4", value: "exercice4" },
-        { text: "Exercice 5", value: "exercice5" },
-        { text: "Exercice 6", value: "exercice6" },
-        { text: "Total", value: "total" },
-      ],
-      teams: [
-        {
-          name: "Task Force 01",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
-        {
-          name: "Task Force 02",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
-        {
-          name: "Task Force 03",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
-        {
-          name: "Task Force 04",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
-        {
-          name: "Task Force 05",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
-        {
-          name: "Task Force 06",
-          exercice1: "Non terminé",
-          exercice2: "Non terminé",
-          exercice3: "Non terminé",
-          exercice4: "Non terminé",
-          exercice5: "Non terminé",
-          exercice6: "Non terminé",
-          total: 100,
-        },
+        { text: "Exercice 1", value: "exercices[0]" },
+        { text: "Exercice 2", value: "exercices[1]" },
+        { text: "Exercice 3", value: "exercices[2]" },
+        { text: "Exercice 4", value: "exercices[3]" },
+        { text: "Exercice 5", value: "exercices[4]" },
+        { text: "Exercice 6", value: "exercices[5]" },
+        { text: "Total", value: "scoreTotal" },
       ],
       scores: [],
     };
   },
   mounted() {
-    let scores = [];
     firebase
-        .database()
-        .ref("taskforce/")
-        .on('value', (snapshot) =>
-        {
-          const data = snapshot.val();
-          Object.keys(data).forEach(el=> {
-            let exercices = [];
-            Object.keys(data[el].exercice).forEach(il => {
-              exercices.push(data[el].exercice[il])
-            })
-            scores.push({taskForce : el, exercices : exercices});
-          })
+      .database()
+      .ref("taskforce/")
+      .on("value", (snapshot) => {
+        this.scores = [];
+        const data = snapshot.val();
+        Object.keys(data).forEach((el) => {
+          let exercices = [];
+          Object.keys(data[el].exercice).forEach((il) => {
+            exercices.push(data[el].exercice[il]);
+          });
+          var scoreTotal = exercices
+            .filter((exercice) => exercice != "Pas encore effectué")
+            .reduce((a, b) => a + b, 0);
+
+          this.scores.push({
+            taskForce: el,
+            exercices: exercices,
+            scoreTotal: scoreTotal,
+          });
         });
-  }
+      });
+  },
 };
 </script>
