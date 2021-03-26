@@ -134,13 +134,11 @@ export default {
           const data = snapshot.val();
           Object.keys(data).forEach(el=> {
             let exercices = [];
-            console.log(data[el].exercice)
             Object.keys(data[el].exercice).forEach(il => {
               exercices.push(data[el].exercice[il])
             })
             scores.push({taskForce : el, exercices : exercices});
           })
-          console.log(scores);
         });
   }
 };
