@@ -23,8 +23,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-// Get a reference to the database service
-var database = firebase.database();
+
 
 firebase.auth().onAuthStateChanged(async(data) => {
     if (!app) {
