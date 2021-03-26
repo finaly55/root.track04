@@ -10,10 +10,16 @@
       class="elevation-1"
     ></v-data-table>
   </div>
+<!--  <div v-for="item in scores" :key="item">
+    &lt;!&ndash; contenu &ndash;&gt;
+  </div>-->
+<!--  <div class="modal fade" v-show="scores"/>-->
 </template>
 
-
 <script>
+
+import firebase from "firebase";
+
 export default {
   name: "Home",
   components: {},
@@ -97,7 +103,25 @@ export default {
           total: 100,
         },
       ],
+      scores: [],
     };
   },
+  methods: {},
+  mounted() {
+    let viewMessage = this;
+    const itemsRef = firebase.database().ref("taskforce04-7df7a-default-rtdb");
+    itemsRef.on("value", snapshot => {
+      let data = snapshot.val();
+      let scores = [];
+      /*Object.keys(data).forEach(key => {
+        scores.push({
+          id: key,
+          taskForce: data[key].taskforce,
+        });
+      });*/
+      console.log(data);
+      // viewMessage.messages = scores;
+    });
+  }
 };
 </script>
