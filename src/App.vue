@@ -11,7 +11,7 @@
     >
       <div class="d-flex align-start flex-column" style="height: 100vh">
         <h3 class="grey--text text--lighten-2 my-10">
-          {{ userConnected.mail }}
+          TaskForce {{ userConnected.number }}
         </h3>
         <v-list dark class="mt-5 pr-8">
           <router-link :to="url" :key="url" v-for="[icon, url, text] in links">
@@ -107,10 +107,14 @@ export default {
     };
     const currentUser = firebase.auth().currentUser;
 
+    let taskForceNb = currentUser.email.split('@');
+    taskForceNb = taskForceNb[0].substr(9);
+
     this.userConnected = {
       firstname: "Julien",
       mail: currentUser.email,
       lastname: "lastname",
+      number: taskForceNb
     };
   },
 
@@ -122,10 +126,6 @@ export default {
         .then(() => {
           this.$router.push({ name: "Login" });
         });
-    },
-
-    monTest() {
-      console.log("fhugihg");
     },
   },
 };
