@@ -23,6 +23,8 @@ const config = {
 firebase.initializeApp(config);
 
 firebase.auth().onAuthStateChanged(async (data) => {
+
+
     if (!app) {
         /* eslint-disable no-new */
         app = new Vue({

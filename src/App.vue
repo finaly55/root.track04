@@ -10,11 +10,12 @@
       v-if="$route.path !== '/login' && $route.path !== '/register'"
     >
       <div class="d-flex align-start flex-column" style="height: 100vh">
-        <h3 class="grey--text text--lighten-2 my-10">root.track TaskForce 04</h3>
+        <h3 class="grey--text text--lighten-2 my-10">
+          {{ userConnected.mail }}
+        </h3>
         <v-list dark class="mt-5 pr-8">
-          <router-link :to="url" :key="icon" v-for="[icon, url, text] in links">
+          <router-link :to="url" :key="url" v-for="[icon, url, text] in links">
             <v-list-item link>
-
               <v-list-item-content>
                 <v-list-item-title>{{ text }}</v-list-item-title>
               </v-list-item-content>
@@ -66,6 +67,7 @@
 import Home from "./views/Home";
 import Vue from "vue";
 import firebase from "firebase";
+
 export default {
   name: "App",
 
@@ -102,6 +104,13 @@ export default {
 
     Vue.prototype.$updateUserConnected = async function (user) {
       context.userConnected = user;
+    };
+    const currentUser = firebase.auth().currentUser;
+
+    this.userConnected = {
+      firstname: "Julien",
+      mail: currentUser.email,
+      lastname: "lastname",
     };
   },
 
