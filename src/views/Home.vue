@@ -30,15 +30,16 @@ export default {
   components: {},
   created() {},
   methods: {
-    writeUserData(userId, name, email, imageUrl) {
+    writeUserData(userId, name, email, imageUrl)
+    {
       firebase
-        .database()
-        .ref("users/" + userId)
-        .set({
-          username: name,
-          email: email,
-          profile_picture: imageUrl,
-        });
+          .database()
+          .ref("users/" + userId)
+          .set({
+            username: name,
+            email: email,
+            profile_picture: imageUrl,
+          });
     },
   },
   data() {
@@ -123,22 +124,24 @@ export default {
       scores: [],
     };
   },
-  methods: {},
   mounted() {
-    let viewMessage = this;
-    const itemsRef = firebase.database().ref("taskforce04-7df7a-default-rtdb");
-    itemsRef.on("value", snapshot => {
-      let data = snapshot.val();
-      let scores = [];
-      /*Object.keys(data).forEach(key => {
-        scores.push({
-          id: key,
-          taskForce: data[key].taskforce,
+    let scores = [];
+    firebase
+        .database()
+        .ref("taskforce/")
+        .on('value', (snapshot) =>
+        {
+          const data = snapshot.val();
+          Object.keys(data).forEach(el=> {
+            let exercices = [];
+            console.log(data[el].exercice)
+            Object.keys(data[el].exercice).forEach(il => {
+              exercices.push(data[el].exercice[il])
+            })
+            scores.push({taskForce : el, exercices : exercices});
+          })
+          console.log(scores);
         });
-      });*/
-      console.log(data);
-      // viewMessage.messages = scores;
-    });
   }
 };
 </script>
