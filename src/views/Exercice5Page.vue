@@ -1,13 +1,14 @@
 <template>
-  <div>Exercice 5</div>
+  <div>
+    <h2>Exercice 5</h2>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Exercice5Page"
-}
+  name: "Exercice5Page",
+};
 </script>
 
 <style scoped>
-
 </style>
