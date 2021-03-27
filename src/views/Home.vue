@@ -11,14 +11,7 @@
       class="elevation-1"
     ></v-data-table>
     <br />
-    <v-btn @click="writeUserData(3, 'test', 'test@gmail.com', 'img')"
-      >click</v-btn
-    >
   </div>
-  <!--  <div v-for="item in scores" :key="item">
-    &lt;!&ndash; contenu &ndash;&gt;
-  </div>-->
-  <!--  <div class="modal fade" v-show="scores"/>-->
 </template>
 
 <script>
@@ -28,18 +21,7 @@ export default {
   name: "Home",
   components: {},
   created() {},
-  methods: {
-    writeUserData(userId, name, email, imageUrl) {
-      firebase
-        .database()
-        .ref("users/" + userId)
-        .set({
-          username: name,
-          email: email,
-          profile_picture: imageUrl,
-        });
-    },
-  },
+  methods: {  },
   data() {
     return {
       headers: [
@@ -72,12 +54,12 @@ export default {
           Object.keys(data[el].exercice).forEach((il) => {
             exercices.push(data[el].exercice[il]);
           });
-          var scoreTotal = exercices
-            .filter((exercice) => exercice != "Pas encore effectué")
-            .reduce((a, b) => a + b, 0);
+          const scoreTotal = exercices
+              .filter((exercice) => exercice !== "Pas encore effectué")
+              .reduce((a, b) => a + b, 0);
 
           this.scores.push({
-            taskForce: el,
+            taskForce: 'TaskForce ' + el,
             exercices: exercices,
             scoreTotal: scoreTotal,
           });

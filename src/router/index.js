@@ -32,11 +32,11 @@ const routes = [
     },
     component: LoginPage
   },
-  {
+  /*{
     path: '/register',
     name: 'Register',
     component: RegisterPage
-  },
+  },*/
   {
     path: '/exo1',
     name: 'Exercice 1',
