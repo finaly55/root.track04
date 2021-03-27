@@ -16,11 +16,11 @@
 
 <script>
 import firebase from "firebase";
+import Vue from "vue";
 
 export default {
   name: "Home",
   components: {},
-  created() {},
   methods: {  },
   data() {
     return {
@@ -42,10 +42,27 @@ export default {
       scores: [],
     };
   },
+  async created() {
+    const context = this;
+    Vue.prototype.$updateUserConnected = async function (user) {
+      context.userConnected = user;
+    };
+    const currentUser = firebase.auth().currentUser;
+
+    let emailSplit = currentUser.email.split("@");
+    let taskForceNb = emailSplit[0].substr(9);
+
+    let campus = emailSplit[1].split('.')[0];
+
+    this.userConnected = {
+      number: taskForceNb,
+      campus: campus,
+    };
+  },
   mounted() {
-    firebase
+    /*firebase
       .database()
-      .ref("taskforce/")
+      .ref( "taskforce/")
       .on("value", (snapshot) => {
         this.scores = [];
         const data = snapshot.val();
@@ -64,7 +81,22 @@ export default {
             scoreTotal: scoreTotal,
           });
         });
-      });
+      });*/
+    firebase
+        .database()
+        .ref( "campus/")
+        .on("value", (snapshot) => {
+          this.scores = [];
+          const data = snapshot.val();
+          Object.keys(data).forEach((campus) => {
+            console.log(campus)
+            /*this.scores.push({
+              taskForce: campus + ' TaskForce ' + nbTaskForce,
+              exercices: exercices,
+              scoreTotal: scoreTotal,
+            });*/
+          })
+        });
   },
 };
 </script>
