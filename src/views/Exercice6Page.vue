@@ -79,7 +79,8 @@ export default {
     isFlagGood: "",
     userConnected: {},
     hasDoneTheExercice: false,
-    alert: false,
+    alert: true,
+    vmId : ''
   }),
   mounted() {
     firebase
@@ -114,16 +115,45 @@ export default {
       number: taskForceNb,
       campus: campus,
     };
+
+    switch (this.userConnected.campus)
+    {
+      case 'aix':
+        this.vmId = 'TF130102'
+        break
+      case 'angers':
+          this.vmId = 'TF49010203'
+        break
+      case 'nantes':
+        if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
+        {
+            this.vmId = 'TF44010203';
+        }
+        else
+        {
+            this.vmId = 'TF440506';
+        }
+        break
+      case 'rennes':
+        if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
+        {
+            this.vmId = 'TF35010203';
+        }
+        else
+        {
+            this.vmId = 'TF350405';
+        }
+        break
+    }
   },
-  methods: {
-    validate() {
+  methods: {validate() {
       let retrievedFlag = "";
       if (!this.hasDoneTheExercice) {
         firebase
           .database()
           .ref("flags/06")
           .once("value")
-          .then((snapshot) => {
+          .then(async (snapshot) => {
             retrievedFlag = snapshot.val();
             if (retrievedFlag === this.flag) {
               this.isFlagGood = true;
@@ -133,10 +163,18 @@ export default {
                   this.userConnected.campus +
                   "/taskforce/" +
                   this.userConnected.number +
-                  "/exercice/01"
+                  "/exercice/06"
               ] = 20;
-              firebase.database().ref().update(update);
+              await firebase.database().ref().update(update);
               this.hasDoneTheExercice = true;
+                try {
+                    const response = await FetcherService.sendPromise(
+                        "del-vm/" + this.vmId
+                    );
+                    console.log(response)
+                } catch (error) {
+                    console.log(error);
+                }
             } else {
               this.isFlagGood = false;
             }
@@ -144,40 +182,11 @@ export default {
       }
     },
     async launchShellScript() {
-      let vmId = "";
-      switch (this.userConnected.campus) {
-        case "aix":
-          vmId = "TF130102";
-          break;
-        case "angers":
-          vmId = "TF49010203";
-          break;
-        case "nantes":
-          if (
-            this.userConnected.number === "01" ||
-            this.userConnected.number === "02" ||
-            this.userConnected.number === "03"
-          ) {
-            vmId = "TF44010203";
-          } else {
-            vmId = "TF440506";
-          }
-          break;
-        case "rennes":
-          if (
-            this.userConnected.number === "01" ||
-            this.userConnected.number === "02" ||
-            this.userConnected.number === "03"
-          ) {
-            vmId = "TF35010203";
-          } else {
-            vmId = "TF350405";
-          }
-          break;
-      }
       try {
-        const response = await FetcherService.sendPromise("new-vm/" + vmId);
-        console.log(response);
+        const response = await FetcherService.sendPromise(
+          "new-vm/" + this.vmId
+        );
+        console.log(response)
       } catch (error) {
         console.log(error);
       }

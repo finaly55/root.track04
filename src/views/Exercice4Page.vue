@@ -111,29 +111,23 @@ export default {
   methods: {
     validate() {
       let retrievedFlag = "";
-      if (!this.hasDoneTheExercice) {
-        firebase
-          .database()
-          .ref("flags/04")
-          .once("value")
-          .then((snapshot) => {
-            retrievedFlag = snapshot.val();
-            if (retrievedFlag === this.flag) {
-              this.isFlagGood = true;
-              let update = {};
-              update[
-                "campus/" +
-                  this.userConnected.campus +
-                  "/taskforce/" +
-                  this.userConnected.number +
-                  "/exercice/01"
-              ] = 5;
-              firebase.database().ref().update(update);
-              this.hasDoneTheExercice = true;
-            } else {
-              this.isFlagGood = false;
-            }
-          });
+      if (!this.hasDoneTheExercice)
+      {
+        firebase.database().ref('flags/04').once('value').then((snapshot) => {
+          retrievedFlag = snapshot.val();
+          if (retrievedFlag === this.flag)
+          {
+            this.isFlagGood = true;
+            let update = {};
+            update['campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/04'] = 5;
+            firebase.database().ref().update(update);
+            this.hasDoneTheExercice = true;
+          }
+          else
+          {
+            this.isFlagGood = false;
+          }
+        });
       }
     },
   },
