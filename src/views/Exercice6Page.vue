@@ -23,7 +23,7 @@
     <v-btn
         class="ma-2"
         outlined
-        href="Ex6-Taskforce04-Nantes.ovpn"
+        href="files-to-dl/Ex6-Taskforce04-Nantes.ovpn"
         download>
       Télécharger fichier vpn
     </v-btn>

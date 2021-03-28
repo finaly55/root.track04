@@ -25,7 +25,7 @@
     <v-btn
         class="ma-2"
         outlined
-        href="Exo4_Steno.zip"
+        href="files-to-dl/Exo4_Steno.zip"
         download>
       Télécharger fichier zip
     </v-btn>
