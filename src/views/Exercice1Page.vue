@@ -79,7 +79,7 @@ export default {
   }),
   mounted()
   {
-    firebase.database().ref('taskforce/' + this.userConnected.number + '/exercice/01').once('value').then((snapshot) => {
+    firebase.database().ref('campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/01').once('value').then((snapshot) => {
       if (typeof snapshot.val() !== "string")
       {
         this.hasDoneTheExercice = true;
@@ -93,11 +93,14 @@ export default {
     };
     const currentUser = firebase.auth().currentUser;
 
-    let taskForceNb = currentUser.email.split("@");
-    taskForceNb = taskForceNb[0].substr(9);
+    let emailSplit = currentUser.email.split("@");
+    let taskForceNb = emailSplit[0].substr(9);
+
+    let campus = emailSplit[1].split('.')[0];
 
     this.userConnected = {
       number: taskForceNb,
+      campus: campus,
     };
   },
   methods: {
@@ -110,7 +113,7 @@ export default {
           retrievedFlag = snapshot.val();
           this.isFlagGood = this.flag === retrievedFlag;
           let update = {};
-          update['taskforce/' + this.userConnected.number + '/exercice/01'] = 10;
+          update['campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/01'] = 10;
           firebase.database().ref().update(update);
           this.hasDoneTheExercice = true;
         });

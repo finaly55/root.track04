@@ -6,8 +6,7 @@
     <v-data-table
       :headers="headers"
       :items="scores"
-      :items-per-page="6"
-      hide-default-footer
+      :items-per-page="10"
       class="elevation-1"
     ></v-data-table>
     <br />
@@ -26,7 +25,7 @@ export default {
     return {
       headers: [
         {
-          text: "Exercice",
+          text: "TaskForce",
           align: "start",
           sortable: false,
           value: "taskForce",
@@ -42,46 +41,7 @@ export default {
       scores: [],
     };
   },
-  async created() {
-    const context = this;
-    Vue.prototype.$updateUserConnected = async function (user) {
-      context.userConnected = user;
-    };
-    const currentUser = firebase.auth().currentUser;
-
-    let emailSplit = currentUser.email.split("@");
-    let taskForceNb = emailSplit[0].substr(9);
-
-    let campus = emailSplit[1].split('.')[0];
-
-    this.userConnected = {
-      number: taskForceNb,
-      campus: campus,
-    };
-  },
   mounted() {
-    /*firebase
-      .database()
-      .ref( "taskforce/")
-      .on("value", (snapshot) => {
-        this.scores = [];
-        const data = snapshot.val();
-        Object.keys(data).forEach((el) => {
-          let exercices = [];
-          Object.keys(data[el].exercice).forEach((il) => {
-            exercices.push(data[el].exercice[il]);
-          });
-          const scoreTotal = exercices
-              .filter((exercice) => exercice !== "Pas encore effectué")
-              .reduce((a, b) => a + b, 0);
-
-          this.scores.push({
-            taskForce: 'TaskForce ' + el,
-            exercices: exercices,
-            scoreTotal: scoreTotal,
-          });
-        });
-      });*/
     firebase
         .database()
         .ref( "campus/")
@@ -89,12 +49,23 @@ export default {
           this.scores = [];
           const data = snapshot.val();
           Object.keys(data).forEach((campus) => {
-            console.log(campus)
-            /*this.scores.push({
-              taskForce: campus + ' TaskForce ' + nbTaskForce,
-              exercices: exercices,
-              scoreTotal: scoreTotal,
-            });*/
+            Object.keys(data[campus].taskforce).forEach((el) => {
+              let exercices = [];
+              Object.keys(data[campus].taskforce[el].exercice).forEach((il) => {
+                exercices.push(data[campus].taskforce[el].exercice[il]);
+              });
+              const scoreTotal = exercices
+                  .filter((exercice) => exercice !== "Pas encore effectué")
+                  .reduce((a, b) => a + b, 0);
+
+              let campusName = campus.substr(0,3);
+              campusName = campusName.charAt(0).toUpperCase() + campusName.slice(1)
+              this.scores.push({
+                taskForce: campusName + ' TaskForce ' + el,
+                exercices: exercices,
+                scoreTotal: scoreTotal,
+              });
+            });
           })
         });
   },
