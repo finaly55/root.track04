@@ -7,7 +7,7 @@ class FetcherService {
 
         let options = {
             method: method,
-            mode: 'cors',
+            mode: 'no-cors',
             cache: 'no-cache',
             headers: !image ? {
                 'Content-Type': 'application/json',
