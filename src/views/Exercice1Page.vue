@@ -75,7 +75,7 @@ import Vue from "vue";
 export default {
   name: "Exercice1Page",
   data: () => ({
-    alert: true,
+    alert: false,
     valid: true,
     flag: "",
     flagRules: [
@@ -121,40 +121,10 @@ export default {
     };
   },
   methods: {
-    async validate() {
+    validate() {
       let retrievedFlag = "";
       if (!this.hasDoneTheExercice) {
-        await firebase
-          .database()
-          .ref("campus/")
-          .on("value", (snapshot) => {
-            this.scores = [];
-            const data = snapshot.val();
-            Object.keys(data).forEach((campus) => {
-              Object.keys(data[campus].taskforce).forEach((el) => {
-                let exercices = [];
-                Object.keys(data[campus].taskforce[el].exercice).forEach(
-                  (il) => {
-                    exercices.push(data[campus].taskforce[el].exercice[il]);
-                  }
-                );
-                const scoreTotal = exercices
-                  .filter((exercice) => exercice !== "Pas encore effectué")
-                  .reduce((a, b) => a + b, 0);
-
-                let campusName = campus.substr(0, 3);
-                campusName =
-                  campusName.charAt(0).toUpperCase() + campusName.slice(1);
-                this.scores.push({
-                  taskForce: campusName + " TaskForce " + el,
-                  exercices: exercices,
-                  scoreTotal: scoreTotal,
-                });
-              });
-            });
-          });
-          
-        await firebase
+        firebase
           .database()
           .ref("flags/01")
           .once("value")
