@@ -143,9 +143,78 @@ export default {
       }
     },
     async launchShellScript() {
+      let vmId = '';
+      switch (this.userConnected.campus)
+      {
+        case 'aix':
+          switch (this.userConnected.number)
+          {
+            case '01':
+              vmId = 'TF1301'
+              break
+            case '02':
+              vmId = 'TF1302'
+              break
+          }
+          break
+        case 'angers':
+          switch (this.userConnected.number)
+          {
+            case '01':
+              vmId = 'TF4901'
+              break
+            case '02':
+              vmId = 'TF4902'
+              break
+            case '03':
+              vmId = 'TF4903'
+              break
+          }
+          break
+        case 'nantes':
+          switch (this.userConnected.number)
+          {
+            case '01':
+              vmId = 'TF4401'
+              break
+            case '02':
+              vmId = 'TF4402'
+              break
+            case '03':
+              vmId = 'TF4403'
+              break
+            case '05':
+              vmId = 'TF4405'
+              break
+            case '06':
+              vmId = 'TF4406'
+              break
+          }
+          break
+        case 'rennes':
+          switch (this.userConnected.number)
+          {
+            case '01':
+              vmId = 'TF3501'
+              break
+            case '02':
+              vmId = 'TF3502'
+              break
+            case '03':
+              vmId = 'TF3503'
+              break
+            case '04':
+              vmId = 'TF3504'
+              break
+            case '05':
+              vmId = 'TF3505'
+              break
+          }
+          break
+      }
       try {
         const response = await FetcherService.sendPromise(
-          "/new-vm/ihdfuihfduis"
+          "new-vm/" + vmId
         );
         console.log(response)
       } catch (error) {
