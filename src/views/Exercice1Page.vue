@@ -75,7 +75,7 @@ import Vue from "vue";
 export default {
   name: "Exercice1Page",
   data: () => ({
-    alert: false,
+    alert: true,
     valid: true,
     flag: "",
     flagRules: [

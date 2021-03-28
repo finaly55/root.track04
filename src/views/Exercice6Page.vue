@@ -79,7 +79,7 @@ export default {
     isFlagGood: "",
     userConnected: {},
     hasDoneTheExercice: false,
-    alert: false,
+    alert: true,
     vmId : ''
   }),
   mounted() {
