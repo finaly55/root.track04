@@ -15,12 +15,22 @@ npm run dev
 ### Compilation pour la prod
 ```
 npm run build
+npm run start
 ```
 
 --- 
 ## 🔧 Accès aux outils du projet :
-### Mongo :
-cloud.mongodb.com : connexion avec Google
+### Firebase :
+connexion avec Google
+
+
+## 🔧 Fonctionnalités du projet :
+- Les utilisateurs peuvent se connecter avec un login / mot de passe
+- Affiche l’identité des deux équipes (4 et 9)
+- Les utilisateurs ne peuvent pas s’inscrire. Les comptes seront créés au préalable.
+- Tableau récapitulatif : chaque utilisateur peut consulter son nombre de points gagnés
+- Chaque exercice possède des indications bien spécifique (indiquées dans le cahier des charges)
+
 
 ---
 ## ⚠️ Les bonnes pratiques à adoptées ⚠️ 
