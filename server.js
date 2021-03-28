@@ -3,6 +3,7 @@ var https = require('https');
 var fs = require('fs');
 var serveStatic = require('serve-static');
 var cors = require('cors')
+const shell = require('shelljs')
 
 // https certificates
 var options = {
