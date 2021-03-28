@@ -128,7 +128,6 @@ export default {
       {
         firebase.database().ref('flags/01').once('value').then((snapshot) => {
           retrievedFlag = snapshot.val();
-          // this.isFlagGood = this.flag === retrievedFlag;
           if (retrievedFlag === this.flag)
           {
             this.isFlagGood = true;
