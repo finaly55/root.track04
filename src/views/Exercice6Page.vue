@@ -19,11 +19,13 @@
       Contactez Ludovic Heurtin sur Teams pour obtenir vos identifiants.
     </v-alert>
 
-      <div>
-          Trouvez les 2 flags utilisateurs, puis le troisième et dernier flag du root !
-          <br>Bien entendu seul le dernier Flag valide les points.
-          <br>Attention, le serveur n'est pas très stable et à tendance à redémarrer.
-      </div>
+    <div>
+      Trouvez les 2 flags utilisateurs, puis le troisième et dernier flag du
+      root !
+      <br />Bien entendu seul le dernier Flag valide les points.
+      <br />Attention, le serveur n'est pas très stable et à tendance à
+      redémarrer.
+    </div>
 
     <v-btn
       class="ma-2"
@@ -86,7 +88,8 @@ export default {
     userConnected: {},
     hasDoneTheExercice: false,
     alert: true,
-    vmId : ''
+    vmId: "",
+    scores: [],
   }),
   mounted() {
     firebase
@@ -122,40 +125,75 @@ export default {
       campus: campus,
     };
 
-    switch (this.userConnected.campus)
-    {
-      case 'aix':
-        this.vmId = 'TF130102'
-        break
-      case 'angers':
-          this.vmId = 'TF49010203'
-        break
-      case 'nantes':
-        if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
-        {
-            this.vmId = 'TF44010203';
+    switch (this.userConnected.campus) {
+      case "aix":
+        this.vmId = "TF130102";
+        break;
+      case "angers":
+        this.vmId = "TF49010203";
+        break;
+      case "nantes":
+        if (
+          this.userConnected.number === "01" ||
+          this.userConnected.number === "02" ||
+          this.userConnected.number === "03"
+        ) {
+          this.vmId = "TF44010203";
+        } else {
+          this.vmId = "TF440506";
         }
-        else
-        {
-            this.vmId = 'TF440506';
+        break;
+      case "rennes":
+        if (
+          this.userConnected.number === "01" ||
+          this.userConnected.number === "02" ||
+          this.userConnected.number === "03"
+        ) {
+          this.vmId = "TF35010203";
+        } else {
+          this.vmId = "TF350405";
         }
-        break
-      case 'rennes':
-        if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
-        {
-            this.vmId = 'TF35010203';
-        }
-        else
-        {
-            this.vmId = 'TF350405';
-        }
-        break
+        break;
     }
   },
-  methods: {validate() {
+  methods: {
+    async validate() {
       let retrievedFlag = "";
       if (!this.hasDoneTheExercice) {
-        firebase
+        await firebase
+          .database()
+          .ref("campus/")
+          .on("value", (snapshot) => {
+            this.scores = [];
+            const data = snapshot.val();
+            Object.keys(data).forEach((campus) => {
+              Object.keys(data[campus].taskforce).forEach((el) => {
+                let exercices = [];
+                Object.keys(data[campus].taskforce[el].exercice).forEach(
+                  (il) => {
+                    exercices.push(data[campus].taskforce[el].exercice[il]);
+                  }
+                );
+                const scoreTotal = exercices
+                  .filter((exercice) => exercice !== "Pas encore effectué")
+                  .reduce((a, b) => a + b, 0);
+
+                let campusName = campus.substr(0, 3);
+                campusName =
+                  campusName.charAt(0).toUpperCase() + campusName.slice(1);
+                this.scores.push({
+                  taskForce: campusName + " TaskForce " + el,
+                  exercices: exercices,
+                  scoreTotal: scoreTotal,
+                });
+              });
+            });
+          });
+        var exercice6 = this.scores.map((x) => x.exercices[5]);
+        var bonus =
+          exercice6.filter((x) => x !== "Pas encore effectué").length == 0;
+
+        await firebase
           .database()
           .ref("flags/06")
           .once("value")
@@ -170,17 +208,17 @@ export default {
                   "/taskforce/" +
                   this.userConnected.number +
                   "/exercice/06"
-              ] = 20;
+              ] = bonus ? 25 : 20;
               await firebase.database().ref().update(update);
               this.hasDoneTheExercice = true;
-                try {
-                    const response = await FetcherService.sendPromise(
-                        "del-vm/" + this.vmId
-                    );
-                    console.log(response)
-                } catch (error) {
-                    console.log(error);
-                }
+              try {
+                const response = await FetcherService.sendPromise(
+                  "del-vm/" + this.vmId
+                );
+                console.log(response);
+              } catch (error) {
+                console.log(error);
+              }
             } else {
               this.isFlagGood = false;
             }
@@ -192,7 +230,7 @@ export default {
         const response = await FetcherService.sendPromise(
           "new-vm/" + this.vmId
         );
-        console.log(response)
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
