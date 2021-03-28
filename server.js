@@ -16,16 +16,19 @@ var port = process.env.PORT || 5000;
 http.createServer(app).listen(port);
 
 const api = express()
+
+api.use(cors());
 api.options('*', cors());
 
 api.get('/new-vm/:id', (req, res) => {
+    console.log(req.params.id)
     shell.exec('./scripts/' + req.params.id + '/NewVM.sh')
-    res.send("VM created")
+    res.json({"text": "VM created"})
 })
 
 api.get('/del-vm/:id', (req, res) => {
     shell.exec('./scripts/' + req.params.id + '/DelVM.sh')
-    res.send("VM deleted")
+    res.json({ "text": "VM deleted" })
 })
 
 api.listen(5001, () => {
