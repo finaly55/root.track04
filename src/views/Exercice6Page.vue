@@ -19,6 +19,12 @@
       Contactez Ludovic Heurtin sur Teams pour obtenir vos identifiants.
     </v-alert>
 
+      <div>
+          Trouvez les 2 flags utilisateurs, puis le troisième et dernier flag du root !
+          <br>Bien entendu seul le dernier Flag valide les points.
+          <br>Attention, le serveur n'est pas très stable et à tendance à redémarrer.
+      </div>
+
     <v-btn
       class="ma-2"
       outlined
