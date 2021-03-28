@@ -19,7 +19,7 @@
       <br>
       Que la force soit avec toi !!
       <br>
-      Fichier d’exercice :  Exo4_steno
+      Fichier d’exercice :  Exo4_steno.zip
     </div>
 
     <v-btn
