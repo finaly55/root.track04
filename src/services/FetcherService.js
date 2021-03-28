@@ -3,7 +3,7 @@ import HTTP_METHODS from "../constants/http_methods"
 class FetcherService {
     // methode qui permet de faire des requetes api
     static async sendPromise(url, method = HTTP_METHODS.GET, data = {}, image = false) {
-        const endpoint = process.env.VUE_APP_API_URL + url
+        const endpoint = "http://localhost:5001/" + url
 
         let options = {
             method: method,
