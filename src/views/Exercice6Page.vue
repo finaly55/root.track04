@@ -28,6 +28,13 @@
       Télécharger fichier vpn
     </v-btn>
 
+    <v-btn
+        class="ma-2"
+        outlined
+        @click="launchShellScript">
+      Lancer script shell
+    </v-btn>
+
     <v-form
         ref="form"
         v-model="valid"
@@ -71,6 +78,8 @@
 <script>
 import firebase from "firebase";
 import Vue from "vue";
+
+// const shell = require('shelljs')
 
 export default {
   name: "Exercice6Page",
@@ -134,6 +143,10 @@ export default {
         });
       }
     },
+    launchShellScript()
+    {
+      
+    }
   },
 }
 </script>

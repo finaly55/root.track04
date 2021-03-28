@@ -130,9 +130,6 @@ export default {
           if (retrievedFlag === this.flag)
           {
             this.isFlagGood = true;
-
-
-
             let update = {};
             update['campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/01'] = 10;
             firebase.database().ref().update(update);
