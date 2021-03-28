@@ -31,7 +31,7 @@
     <v-btn
         class="ma-2"
         outlined
-        href="Ex1-Taskforce04-Nantes.ovpn"
+        href="files-to-dl/Ex1-Taskforce04-Nantes.ovpn"
         download>
       Télécharger fichier vpn
     </v-btn>
@@ -69,7 +69,6 @@
     <v-alert v-if="isFlagGood === false"
           type="error"
           class="mt-5"
-         dismissible
     >
       Mauvais flag :(
     </v-alert>
@@ -131,6 +130,9 @@ export default {
           if (retrievedFlag === this.flag)
           {
             this.isFlagGood = true;
+
+
+
             let update = {};
             update['campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/01'] = 10;
             firebase.database().ref().update(update);
