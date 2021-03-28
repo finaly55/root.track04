@@ -23,6 +23,7 @@ export default {
   methods: {  },
   data() {
     return {
+      alert: false,
       headers: [
         {
           text: "TaskForce",

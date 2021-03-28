@@ -3,63 +3,52 @@
     <h2>Exercice 5</h2>
     <br />
     <br />
-    <v-alert v-if="hasDoneTheExercice === true"
-             type="warning">
+    <v-alert v-if="hasDoneTheExercice === true" type="warning">
       Vous avez déjà fait cet exercice
     </v-alert>
 
     <div>
       Notre Formateur Nicolas L. ne jure que par le partage FTP.
-      <br>Afin de lui prouver que sa méthode n’est pas la bonne et surtout n’est absolument pas sécurisé.
-      <br>Afin de lui prouver, nous avons fait une capture de trame pendant qu’il se connectait à son FTP.
-      <br>Retrouvez le mot de passe qu’il utilise.
+      <br />Afin de lui prouver que sa méthode n’est pas la bonne et surtout
+      n’est absolument pas sécurisé. <br />Afin de lui prouver, nous avons fait
+      une capture de trame pendant qu’il se connectait à son FTP.
+      <br />Retrouvez le mot de passe qu’il utilise.
     </div>
 
     <v-btn
-        class="ma-2"
-        outlined
-        href="files-to-dl/NANTES TASKFORCE04-exo5.pcap"
-        download>
+      class="ma-2"
+      outlined
+      href="files-to-dl/NANTES TASKFORCE04-exo5.pcap"
+      download
+    >
       Télécharger fichier pcap
     </v-btn>
 
-    <v-form
-        ref="form"
-        v-model="valid"
-        lazy-validation
-    >
+    <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
-          label="Flag"
-          v-model="flag"
-          :rules="flagRules"
-          style="width: 150px"
-          required>
+        label="Flag"
+        v-model="flag"
+        :rules="flagRules"
+        style="width: 150px"
+        required
+      >
       </v-text-field>
       <v-btn
-          :disabled="flag.length === 0"
-          color="success"
-          class="mr-4"
-          @click="validate"
+        :disabled="flag.length === 0"
+        color="success"
+        class="mr-4"
+        @click="validate"
       >
         Envoyer
       </v-btn>
     </v-form>
 
-    <v-alert v-if="isFlagGood === true"
-             type="success"
-             class="mt-5"
-             dismissible
-    >
+    <v-alert v-if="isFlagGood === true" type="success" class="mt-5" dismissible>
       Bon flag !
     </v-alert>
-    <v-alert v-if="isFlagGood === false"
-             type="error"
-             class="mt-5"
-             dismissible
-    >
+    <v-alert v-if="isFlagGood === false" type="error" class="mt-5" dismissible>
       Mauvais flag :(
     </v-alert>
-
   </div>
 </template>
 
@@ -70,24 +59,33 @@ import Vue from "vue";
 export default {
   name: "Exercice5Page",
   data: () => ({
+    alert: false,
     valid: true,
-    flag : '',
+    flag: "",
     flagRules: [
-      v => !!v || 'Le champ doit être rempli',
+      (v) => !!v || "Le champ doit être rempli",
       /*v => v.length <= 10 || 'Name must be less than 10 characters',*/
     ],
-    isFlagGood : '',
+    isFlagGood: "",
     userConnected: {},
-    hasDoneTheExercice : false
+    hasDoneTheExercice: false,
   }),
-  mounted()
-  {
-    firebase.database().ref('campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/05').once('value').then((snapshot) => {
-      if (typeof snapshot.val() !== "string")
-      {
-        this.hasDoneTheExercice = true;
-      }
-    });
+  mounted() {
+    firebase
+      .database()
+      .ref(
+        "campus/" +
+          this.userConnected.campus +
+          "/taskforce/" +
+          this.userConnected.number +
+          "/exercice/05"
+      )
+      .once("value")
+      .then((snapshot) => {
+        if (typeof snapshot.val() !== "string") {
+          this.hasDoneTheExercice = true;
+        }
+      });
   },
   async created() {
     const context = this;
@@ -99,7 +97,7 @@ export default {
     let emailSplit = currentUser.email.split("@");
     let taskForceNb = emailSplit[0].substr(9);
 
-    let campus = emailSplit[1].split('.')[0];
+    let campus = emailSplit[1].split(".")[0];
 
     this.userConnected = {
       number: taskForceNb,
@@ -107,30 +105,35 @@ export default {
     };
   },
   methods: {
-    validate()
-    {
+    validate() {
       let retrievedFlag = "";
-      if (!this.hasDoneTheExercice)
-      {
-        firebase.database().ref('flags/05').once('value').then((snapshot) => {
-          retrievedFlag = snapshot.val();
-          if (retrievedFlag === this.flag)
-          {
-            this.isFlagGood = true;
-            let update = {};
-            update['campus/' + this.userConnected.campus + '/taskforce/' + this.userConnected.number + '/exercice/05'] = 5;
-            firebase.database().ref().update(update);
-            this.hasDoneTheExercice = true;
-          }
-          else
-          {
-            this.isFlagGood = false;
-          }
-        });
+      if (!this.hasDoneTheExercice) {
+        firebase
+          .database()
+          .ref("flags/05")
+          .once("value")
+          .then((snapshot) => {
+            retrievedFlag = snapshot.val();
+            if (retrievedFlag === this.flag) {
+              this.isFlagGood = true;
+              let update = {};
+              update[
+                "campus/" +
+                  this.userConnected.campus +
+                  "/taskforce/" +
+                  this.userConnected.number +
+                  "/exercice/05"
+              ] = 5;
+              firebase.database().ref().update(update);
+              this.hasDoneTheExercice = true;
+            } else {
+              this.isFlagGood = false;
+            }
+          });
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>

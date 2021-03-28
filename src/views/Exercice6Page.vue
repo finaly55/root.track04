@@ -79,6 +79,7 @@ export default {
     isFlagGood: "",
     userConnected: {},
     hasDoneTheExercice: false,
+    alert: false,
   }),
   mounted() {
     firebase
@@ -143,41 +144,40 @@ export default {
       }
     },
     async launchShellScript() {
-      let vmId = '';
-      switch (this.userConnected.campus)
-      {
-        case 'aix':
-          vmId = 'TF130102'
-          break
-        case 'angers':
-          vmId = 'TF49010203'
-          break
-        case 'nantes':
-          if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
-          {
-            vmId = 'TF44010203';
+      let vmId = "";
+      switch (this.userConnected.campus) {
+        case "aix":
+          vmId = "TF130102";
+          break;
+        case "angers":
+          vmId = "TF49010203";
+          break;
+        case "nantes":
+          if (
+            this.userConnected.number === "01" ||
+            this.userConnected.number === "02" ||
+            this.userConnected.number === "03"
+          ) {
+            vmId = "TF44010203";
+          } else {
+            vmId = "TF440506";
           }
-          else
-          {
-            vmId = 'TF440506';
+          break;
+        case "rennes":
+          if (
+            this.userConnected.number === "01" ||
+            this.userConnected.number === "02" ||
+            this.userConnected.number === "03"
+          ) {
+            vmId = "TF35010203";
+          } else {
+            vmId = "TF350405";
           }
-          break
-        case 'rennes':
-          if (this.userConnected.number === '01' || this.userConnected.number === '02' || this.userConnected.number === '03')
-          {
-            vmId = 'TF35010203';
-          }
-          else
-          {
-            vmId = 'TF350405';
-          }
-          break
+          break;
       }
       try {
-        const response = await FetcherService.sendPromise(
-          "new-vm/" + vmId
-        );
-        console.log(response)
+        const response = await FetcherService.sendPromise("new-vm/" + vmId);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
