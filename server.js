@@ -44,7 +44,9 @@ api.get('/del-vm/:id', (req, res) => {
 // run API server
 var portAPI = process.env.PORTAPI || 5001;
 
-api.listen(portAPI, () => {
-    console.log("L'API écoute sur le port " + portAPI)
-})
+// create an HTTPS service identical to the HTTP service.
+https.createServer(options, api).listen(portAPI, () => {
+    console.log("L'API écoute sur le port " + portAPI);
+});
+
 
