@@ -20,6 +20,23 @@
       Contactez Ludovic Heurtin sur Teams pour obtenir vos identifiants.
     </v-alert>
 
+    <div>
+      Vous apprenez aujourd’hui que vous êtes licencié d’une société dans le secteur du divertissement audiovisuel.
+      <br>Etant rancunier, vous décidez de trouver un moyen de vous venger en faisant de la mauvaise publicité auprès d’un prospect, mais vous ne savez pas de quelle société il s’agit.
+      <br>Pour l’instant…
+      <br>Vous possédez un accès VPN encore actif, ainsi que les identifiants Active Directory de la comptable Alice BURI : TF4404\alice – Compta1234 et l’adresse IP du serveur de fichiers : 10.44.4.3.
+      <br>Objectif : trouver le nom du prospect.
+    </div>
+
+    <v-btn
+        class="ma-2"
+        outlined
+        href="Ex1-Taskforce04-Nantes.ovpn"
+        download>
+      Télécharger fichier vpn
+    </v-btn>
+
+
     <v-form
         ref="form"
         v-model="valid"

@@ -8,6 +8,21 @@
       Vous avez déjà fait cet exercice
     </v-alert>
 
+    <div>
+      Notre Formateur Nicolas L. ne jure que par le partage FTP.
+      <br>Afin de lui prouver que sa méthode n’est pas la bonne et surtout n’est absolument pas sécurisé.
+      <br>Afin de lui prouver, nous avons fait une capture de trame pendant qu’il se connectait à son FTP.
+      <br>Retrouvez le mot de passe qu’il utilise.
+    </div>
+
+    <v-btn
+        class="ma-2"
+        outlined
+        href="NANTES TASKFORCE04-exo5.pcap"
+        download>
+      Télécharger fichier pcap
+    </v-btn>
+
     <v-form
         ref="form"
         v-model="valid"

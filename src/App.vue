@@ -11,7 +11,7 @@
     >
       <div class="d-flex align-start flex-column" style="height: 100vh">
         <h3 class="grey--text text--lighten-2 my-10">
-          TaskForce {{ userConnected.number }}
+         {{ userConnected.campus }} TaskForce {{ userConnected.number }}
         </h3>
         <v-list dark class="mt-5 pr-8">
           <router-link :to="url" :key="url" v-for="[icon, url, text] in links">
@@ -107,14 +107,15 @@ export default {
     };
     const currentUser = firebase.auth().currentUser;
 
-    let taskForceNb = currentUser.email.split("@");
-    taskForceNb = taskForceNb[0].substr(9);
+    let emailSplit = currentUser.email.split("@");
+    let taskForceNb = emailSplit[0].substr(9);
+
+    let campus = emailSplit[1].split('.')[0];
+    campus = campus.charAt(0).toUpperCase() + campus.slice(1)
 
     this.userConnected = {
-      firstname: "Julien",
-      mail: currentUser.email,
-      lastname: "lastname",
       number: taskForceNb,
+      campus: campus,
     };
   },
 

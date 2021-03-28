@@ -8,6 +8,18 @@
       Vous avez déjà fait cet exercice
     </v-alert>
 
+    <div>
+      Bonjour à vous Lieutenant de vaisseau !
+      <br>Sur cet exercice vous incarnerez un Capitaine d'une flotte de navires Français.
+      <br>Votre but est de retrouver des mots déchiffrables de différentes façons.
+      <br>Puis les additionner pour en faire une phrase, qui sera la réponse.
+      <br>Enigme :
+      <br>Mon premier était utilisé durant la World War II par des ennemis.
+      <br>Mon second reprend la Base d'un QG + un numéro.
+      <br>Et mon dernier est utilisé par vous, afin de communiquer.
+
+    </div>
+
     <v-form
         ref="form"
         v-model="valid"

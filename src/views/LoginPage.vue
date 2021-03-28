@@ -62,14 +62,18 @@ export default {
         .then(async (data) => {
           this.$showSnackbar("Bonjour vous êtes maintenant connecté.");
 
-          let taskForceNb = data.user.email.split("@");
-          taskForceNb = taskForceNb[0].substr(9);
+          let emailSplit = data.user.email.split("@");
+          let taskForceNb = emailSplit[0].substr(9);
+
+          let campus = emailSplit[1].split('.')[0];
+          campus = campus.charAt(0).toUpperCase() + campus.slice(1)
 
           this.$updateUserConnected({
             firstname: "Julien",
             mail: data.user.email,
             lastname: "lastname",
             number: taskForceNb,
+            campus: campus,
           });
           this.$router.replace({ name: "News" });
         })

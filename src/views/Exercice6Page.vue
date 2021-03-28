@@ -20,6 +20,14 @@
       Contactez Ludovic Heurtin sur Teams pour obtenir vos identifiants.
     </v-alert>
 
+    <v-btn
+        class="ma-2"
+        outlined
+        href="Ex6-Taskforce04-Nantes.ovpn"
+        download>
+      Télécharger fichier vpn
+    </v-btn>
+
     <v-form
         ref="form"
         v-model="valid"

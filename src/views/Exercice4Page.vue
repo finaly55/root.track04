@@ -8,6 +8,20 @@
       Vous avez déjà fait cet exercice
     </v-alert>
 
+    <div>
+      Vous recevez un fichier d’un ami, le connaissant, ce petit cachotier, il vous réserve surement des surprises.
+      <br>
+      Le fichier contient un fichier audio et autre fichier zippé je vous laisse utilisé votre esprit d’analyse et d’imagination et puis certains outils qui vous aideront à venir à bout des énigmes.
+      <br>
+      Objectif : Trouver le Flag cacher.
+      <br>
+      A toi de jouer je te laisse dézipper le fichier d’exercice.
+      <br>
+      Que la force soit avec toi !!
+      <br>
+      Fichier d’exercice :  Exo4_steno
+    </div>
+
     <v-form
         ref="form"
         v-model="valid"
