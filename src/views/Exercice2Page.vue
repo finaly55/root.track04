@@ -12,11 +12,20 @@
       <br />Sur cet exercice vous incarnerez un Capitaine d'une flotte de
       navires Français. <br />Votre but est de retrouver des mots déchiffrables
       de différentes façons. <br />Puis les additionner pour en faire une
-      phrase, qui sera la réponse. <br />Enigme : <br />Mon premier était
+        phrase, qui sera la réponse. <br /><br><i>Enigme :</i> <br />Mon premier était
       utilisé durant la World War II par des ennemis. <br />Mon second reprend
       la Base d'un QG + un numéro. <br />Et mon dernier est utilisé par vous,
       afin de communiquer.
     </div>
+
+      <v-btn
+          class="ma-2 mt-5"
+          outlined
+          href="exercice2/index.html"
+          link="true"
+          target="_blank">
+          Aller à l'exercice 2
+      </v-btn>
 
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
@@ -58,7 +67,6 @@ export default {
     flag: "",
     flagRules: [
       (v) => !!v || "Le champ doit être rempli",
-      /*v => v.length <= 10 || 'Name must be less than 10 characters',*/
     ],
     isFlagGood: "",
     userConnected: {},

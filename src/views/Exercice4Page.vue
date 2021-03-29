@@ -68,7 +68,6 @@ export default {
     flag: "",
     flagRules: [
       (v) => !!v || "Le champ doit être rempli",
-      /*v => v.length <= 10 || 'Name must be less than 10 characters',*/
     ],
     isFlagGood: "",
     userConnected: {},

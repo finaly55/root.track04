@@ -76,8 +76,6 @@ import firebase from "firebase";
 import Vue from "vue";
 import FetcherService from "../services/FetcherService";
 
-// const shell = require('shelljs')
-
 export default {
   name: "Exercice6Page",
   data: () => ({
@@ -85,7 +83,6 @@ export default {
     flag: "",
     flagRules: [
       (v) => !!v || "Le champ doit être rempli",
-      /*v => v.length <= 10 || 'Name must be less than 10 characters',*/
     ],
     isFlagGood: "",
     userConnected: {},

@@ -7,6 +7,10 @@
       Vous avez déjà fait cet exercice
     </v-alert>
 
+      <v-img id="img"
+          src="@/assets/pictures/bee9_UN.png"
+      ></v-img>
+
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         label="Flag"
@@ -47,7 +51,6 @@ export default {
     flag: "",
     flagRules: [
       (v) => !!v || "Le champ doit être rempli",
-      /*v => v.length <= 10 || 'Name must be less than 10 characters',*/
     ],
     isFlagGood: "",
     userConnected: {},
@@ -154,4 +157,8 @@ export default {
 </script>
 
 <style scoped>
+#img {
+    max-height: 400em;
+    max-width: 40em;
+}
 </style>
