@@ -28,7 +28,7 @@
     </div>
 
     <v-btn
-      class="ma-2"
+      class="ma-2 mt-5"
       outlined
       href="files-to-dl/Ex6-Taskforce04-Nantes.ovpn"
       download
@@ -36,9 +36,13 @@
       Télécharger fichier vpn
     </v-btn>
 
-    <v-btn class="ma-2" outlined @click="launchShellScript">
+    <v-btn class="ma-2 mt-5" outlined @click="launchShellScript">
       Commencer l'exercice
     </v-btn>
+
+      <div class="mt-5">
+          Votre serveur cible est {{this.vmId}}
+      </div>
 
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field

@@ -32,7 +32,7 @@
     </div>
 
     <v-btn
-      class="ma-2"
+      class="ma-2 mt-5"
       outlined
       href="files-to-dl/Ex1-Taskforce04-Nantes.ovpn"
       download

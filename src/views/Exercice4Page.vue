@@ -24,7 +24,7 @@
       Fichier d’exercice : Exo4_steno.zip
     </div>
 
-    <v-btn class="ma-2" outlined href="files-to-dl/Exo4_Steno.zip" download>
+    <v-btn class="ma-2 mt-5" outlined href="files-to-dl/Exo4_Steno.zip" download>
       Télécharger fichier zip
     </v-btn>
 
