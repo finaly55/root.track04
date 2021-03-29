@@ -7,8 +7,21 @@
       Vous avez déjà fait cet exercice
     </v-alert>
 
+      <div>
+          Vous recevez un fichier contenant une image, à vous d’analyser et décrypter le fichier pour trouver votre chemin.
+
+          <br>Le fichier contient une image.
+
+          <br>Objectif: Trouver le Flag cacher.
+
+          <br>A toi de jouer je te laisse dézipper le fichier d’exercice.
+
+          <br>Que la force soit avec toi !!
+      </div>
+
       <v-img id="img"
-          src="@/assets/pictures/bee9_UN.png"
+             class="mt-5"
+          src="img/canvas.png"
       ></v-img>
 
     <v-form ref="form" v-model="valid" lazy-validation>
