@@ -37,7 +37,7 @@
     </v-btn>
 
     <v-btn class="ma-2" outlined @click="launchShellScript">
-      Lancer script shell
+      Commencer l'exercice
     </v-btn>
 
     <v-form ref="form" v-model="valid" lazy-validation>
