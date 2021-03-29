@@ -14,7 +14,7 @@
 
           <br>Objectif: Trouver le Flag cacher.
 
-          <br>A toi de jouer je te laisse dézipper le fichier d’exercice.
+          <br>A toi de jouer je te laisse télécharger l'image de l’exercice.
 
           <br>Que la force soit avec toi !!
       </div>
