@@ -27,6 +27,10 @@
       redémarrer.
     </div>
 
+      <div class="mt-5">
+          Votre serveur cible est {{this.vmId}}
+      </div>
+
     <v-btn
       class="ma-2 mt-5"
       outlined
@@ -39,11 +43,6 @@
     <v-btn class="ma-2 mt-5" outlined @click="launchShellScript">
       Commencer l'exercice
     </v-btn>
-
-      <div class="mt-5">
-          Votre serveur cible est {{this.vmId}}
-      </div>
-
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         label="Flag"
