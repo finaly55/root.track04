@@ -194,7 +194,7 @@ export default {
           });
         var exercice6 = this.scores.map((x) => x.exercices[5]);
         var bonus =
-          exercice6.filter((x) => x !== "Pas encore effectué").length == 0;
+          exercice6.filter((x) => x !== "Pas encore effectué").length === 0;
 
         await firebase
           .database()
