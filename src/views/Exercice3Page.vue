@@ -14,10 +14,19 @@
 
           <br>Objectif: Trouver le Flag cacher.
 
-          <br>A toi de jouer je te laisse télécharger l'image de l’exercice.
+          <br>A toi de jouer je te laisse dézipper le fichier d’exercice.
 
           <br>Que la force soit avec toi !!
       </div>
+
+      <v-btn
+          class="ma-2 mt-5"
+          outlined
+          href="files-to-dl/exo3.zip"
+          download
+      >
+          Télécharger fichier zip
+      </v-btn>
 
       <v-img id="img"
              class="mt-5"
@@ -171,7 +180,7 @@ export default {
 
 <style scoped>
 #img {
-    max-height: 400em;
-    max-width: 40em;
+    max-height: 20em;
+    max-width: 20em;
 }
 </style>
