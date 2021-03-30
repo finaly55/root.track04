@@ -143,7 +143,7 @@ export default {
           });
         var exercice4 = this.scores.map((x) => x.exercices[3]);
         var bonus =
-          exercice4.filter((x) => x !== "Pas encore effectué").length == 0;
+          exercice4.filter((x) => x !== "Pas encore effectué").length === 0;
 
         await firebase
           .database()
