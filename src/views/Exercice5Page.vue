@@ -139,7 +139,7 @@ export default {
           });
         var exercice5 = this.scores.map((x) => x.exercices[4]);
         var bonus =
-          exercice5.filter((x) => x !== "Pas encore effectué").length == 0;
+          exercice5.filter((x) => x !== "Pas encore effectué").length === 0;
 
         await firebase
           .database()
@@ -156,7 +156,7 @@ export default {
                   "/taskforce/" +
                   this.userConnected.number +
                   "/exercice/05"
-              ] = bonus ? 6.5 : 5;
+              ] = bonus ? 6.25 : 5;
               firebase.database().ref().update(update);
               this.hasDoneTheExercice = true;
             } else {
