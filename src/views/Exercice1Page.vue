@@ -154,7 +154,7 @@ export default {
             });
           });
         var exercice1 = this.scores.map((x) => x.exercices[0]);
-        var bonus = exercice1.filter((x) => x !== "Pas encore effectué").length == 0;
+        var bonus = exercice1.filter((x) => x !== "Pas encore effectué").length === 0;
 
         await firebase
           .database()
