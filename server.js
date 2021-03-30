@@ -4,6 +4,7 @@ var fs = require('fs');
 var serveStatic = require('serve-static');
 var cors = require('cors')
 const shell = require('shelljs')
+const history = require('connect-history-api-fallback');
 
 // https certificates
 var options = {
@@ -14,6 +15,12 @@ var options = {
 // create a service (the app object is just a callback).
 app = express();
 app.use(serveStatic(__dirname + "/dist"));
+
+app.use(history({
+    disableDotRule: true,
+    verbose: true
+}));
+
 var port = process.env.PORT || 5000;
 
 // create an HTTPS service identical to the HTTP service.
